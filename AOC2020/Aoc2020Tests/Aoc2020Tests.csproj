@@ -15,8 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Day 04 passports\Day 04 passports.csproj" />
     <ProjectReference Include="..\Day1\Day1.csproj" />
     <ProjectReference Include="..\Day2 Password Policy\Day2 Password Policy.csproj" />
+    <ProjectReference Include="..\Day3 Tree map\Day3 Tree map.csproj" />
   </ItemGroup>
 
 </Project>
