@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day1", "Day1\Day1.csproj", "{3766A634-D1D0-48FD-9E38-CA89515D4479}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day01", "Day1\Day01.csproj", "{3766A634-D1D0-48FD-9E38-CA89515D4479}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aoc2020Tests", "Aoc2020Tests\Aoc2020Tests.csproj", "{FDB965E4-AB2A-47C5-9650-5A50F2207D55}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day2 Password Policy", "Day2 Password Policy\Day2 Password Policy.csproj", "{24507724-8D53-4A7E-9D5D-983153ACB7D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day02 Password Policy", "Day2 Password Policy\Day02 Password Policy.csproj", "{24507724-8D53-4A7E-9D5D-983153ACB7D9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day3 Tree map", "Day3 Tree map\Day3 Tree map.csproj", "{DF1B9F1D-EBD8-4370-99FA-D822745879C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day03 Tree map", "Day3 Tree map\Day03 Tree map.csproj", "{DF1B9F1D-EBD8-4370-99FA-D822745879C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day 04 passports", "Day 04 passports\Day 04 passports.csproj", "{21132B31-867E-46F1-9249-C10B09F53729}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day04 passports", "Day 04 passports\Day04 passports.csproj", "{21132B31-867E-46F1-9249-C10B09F53729}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

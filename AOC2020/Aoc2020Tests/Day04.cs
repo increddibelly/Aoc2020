@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Aoc2020Tests
 {
-    public class Day4
+    public class Day04
     {
 
         [Test]

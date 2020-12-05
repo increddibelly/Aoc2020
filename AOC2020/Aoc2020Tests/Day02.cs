@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Aoc2020Tests
 {
-    public class Day2
+    public class Day02
     {
         [TestCase("cdef", false)]
         [TestCase("bcdef", true)]

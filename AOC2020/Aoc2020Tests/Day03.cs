@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Aoc2020Tests
 {
-    public class Day3
+    public class Day03
     {
         [Test]
         public void ShouldParseMap()

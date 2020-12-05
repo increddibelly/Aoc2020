@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace Aoc2020Tests
 {
-    public class Day1
+    public class Day01
     {
         private Accounting _cut = new Accounting();
 
