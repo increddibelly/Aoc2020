@@ -63,37 +63,8 @@ namespace Aoc2020Tests
                 break;
             }
 
-
-            //foreach(var pass in passes) {
-            //    // 13, 14, 15, 18, 20, 22
-            //    var seatID = pass.Value.SeatID;
-
-            //    // is the neighbouring seatId already scanned?
-            //    if (!passes.ContainsKey(seatID + 1))
-            //    {
-            //        // does the next-neighbour exist?
-            //        if (passes.ContainsKey(seatID + 2))
-            //        {
-            //            myPassID = seatID + 1;
-            //            break;
-            //        }
-            //    }
-
-            //    // look the other way too, but skip the lowest row
-            //    if (passes.ContainsKey(seatID - 1) && seatID > )
-            //    {
-            //        // does the next-neighbour exist?
-            //        if (passes.ContainsKey(seatID - 2))
-            //        {
-            //            myPassID = seatID - 1;
-            //            break;
-            //        }
-            //    }
-            //}
-
             // Assert
             myPassID.Should().Be(619);
+        }
     }
-
-}
 }
