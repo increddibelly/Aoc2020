@@ -18,6 +18,7 @@
     <ProjectReference Include="..\Day 04 passports\Day04 passports.csproj" />
     <ProjectReference Include="..\Day05\Day05.csproj" />
     <ProjectReference Include="..\Day06\Day06.csproj" />
+    <ProjectReference Include="..\Day07\Day07.csproj" />
     <ProjectReference Include="..\Day1\Day01.csproj" />
     <ProjectReference Include="..\Day2 Password Policy\Day02 Password Policy.csproj" />
     <ProjectReference Include="..\Day3 Tree map\Day03 Tree map.csproj" />
