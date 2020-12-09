@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Day09
+namespace Day10
 {
     public class Class1
     {
