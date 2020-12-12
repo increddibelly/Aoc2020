@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using Day12;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,34 +7,19 @@ using FluentAssertions;
 
 namespace Aoc2020Tests
 {
-    public class DayXX
+    public class Day12
     {
         [Test]
         public void ShouldParseExample()
         {
             // Arrange
 
-
             // Act
-
+            var nav = new Navigator(Input.Example);
+            var distance = nav.Move();
 
             // Assert
-
-
-        }
-
-        [Test]
-        public void ShouldRunExample()
-        {
-            // Arrange
-
-
-            // Act
-
-
-            // Assert
-
-
+            distance.Should().Be(25);
         }
 
         [Test]
@@ -41,26 +27,23 @@ namespace Aoc2020Tests
         {
             // Arrange
 
-
             // Act
-
+            var nav = new Navigator(Input.Value);
+            var distance = nav.Move();
 
             // Assert
-
+            distance.Should().Be(904);
         }
 
 
         [Test]
-        public void ShouldRunExample1()
+        public void ShouldRunExample2()
         {
-            // Arrange
-
-
-            // Act
-
+            var nav = new Navigator(Input.Example);
+            var distance = nav.MoveVector();
 
             // Assert
-
+            distance.Should().Be(286);
         }
 
 
@@ -68,13 +51,11 @@ namespace Aoc2020Tests
         public void ShouldRunPuzzle2()
         {
             // Arrange
-
-
-            // Act
-
+            var nav = new Navigator(Input.Value);
+            var distance = nav.MoveVector();
 
             // Assert
-
+            distance.Should().Be(18747);
         }
     }
 }

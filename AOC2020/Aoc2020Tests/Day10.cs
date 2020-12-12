@@ -1,8 +1,6 @@
 ﻿using NUnit.Framework;
 using Day10;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using FluentAssertions;
 
 namespace Aoc2020Tests
 {
@@ -12,7 +10,7 @@ namespace Aoc2020Tests
         public void ShouldParseExample()
         {
             // Arrange
-
+            
 
             // Act
 
@@ -26,41 +24,54 @@ namespace Aoc2020Tests
         public void ShouldRunExample()
         {
             // Arrange
-
+            var jolter = JoltAdapter.Parse(Input.Example);
 
             // Act
-
+            var dist = jolter.FindDistribution();
 
             // Assert
-
-
+            dist.Should().Be(35);
         }
 
         [Test]
         public void ShouldRunPuzzle1()
         {
-            // Arrange
 
+            // Arrange
+            var jolter = JoltAdapter.Parse(Input.Value);
 
             // Act
-
+            var dist = jolter.FindDistribution();
 
             // Assert
-
+            dist.Should().Be(1690);
         }
 
 
         [Test]
-        public void ShouldRunExample1()
+        public void ShouldRunP2Example()
         {
             // Arrange
-
+            var jolter = JoltAdapter.Parse(Input.Example);
 
             // Act
-
+            var dist = jolter.FindPermutations();
 
             // Assert
+            dist.Should().Be(8);
+        }
 
+        [Test]
+        public void ShouldRunP2Example2()
+        {
+            // Arrange
+            var jolter = JoltAdapter.Parse(Input.Example2);
+
+            // Act
+            var dist = jolter.FindPermutations();
+
+            // Assert
+            dist.Should().Be(19208);
         }
 
 
@@ -68,13 +79,13 @@ namespace Aoc2020Tests
         public void ShouldRunPuzzle2()
         {
             // Arrange
-
+            var jolter = JoltAdapter.Parse(Input.Value);
 
             // Act
-
+            var dist = jolter.FindPermutations();
 
             // Assert
-
+            dist.Should().Be(5289227976704L);
         }
     }
 }
