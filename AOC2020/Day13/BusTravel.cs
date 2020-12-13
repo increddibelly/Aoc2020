@@ -6,47 +6,66 @@ namespace Day13
 {
     public class BusTravel
     {
-        private Dictionary<int, int[]> BusTimes;
-        private int CurrentTime;
+        private long[] BusTimes;
+        public long CurrentTime { get; }
 
         public BusTravel(string input)
         {
             var parts = input.Split(Environment.NewLine);
-            CurrentTime = int.Parse(parts[0]);
-            var busKeys = parts[1].Replace("x,", "").Split(",").Select(time => int.Parse(time)).OrderBy(x => x).ToArray();
-            BusTimes = busKeys.ToDictionary(x => x, x => AllTimesInHour(x));
+            CurrentTime = long.Parse(parts[0]);
+            BusTimes = parts[1].Replace("x", "0").Replace(" ","").Split(",").Select(time => long.Parse(time)).ToArray();
         }
 
-        public int InitialWait()
+        public long InitialWait(long timestamp)
         {
-            var minutes = CurrentTime % 100;
-            var nextBus = FindBusNear(minutes);
-
-            return nextBus.Key * (nextBus.Value - minutes);
+            var nextBuses = EarliestDeparturesAfter(timestamp);
+            var nextBus = nextBuses.OrderBy(x => x.Value).First();
+            return nextBus.Key * (nextBus.Value - timestamp);
         }
 
-        public KeyValuePair<int, int> FindBusNear(int time)
+        public bool DoesBusDepartAtTimestamp(long timestamp, long busId)
         {
-            var times = BusTimes.ToDictionary(
-                    bus => bus.Key,
-                    bus => {
-                        var candidates = bus.Value.Where(b => b >= time);
-                        return candidates.Any() ? candidates.Min() : -1;
-                    })
-                .Where(x => x.Value > -1)
-                .OrderBy(x => x.Value);
-            return times.First(x => x.Value > time);
+            return busId == 0 || timestamp % busId == 0;
         }
 
-        public int[] AllTimesInHour(int id)
+        public long EarliestDeparture(long timestamp, long busId)
         {
-            var items = new List<int>();
-            for(var time = id; time < 60; time++)
+            var t = timestamp;
+            do
             {
-                if (time % id == 0)
-                    items.Add(time);
-            }
-            return items.ToArray();
+                var mod = t % busId;
+                if (mod == 0) return t;
+                t+=busId-mod;
+            } while (true);
+        }
+
+        public long FindSequentialDepartures(long seed = 1)
+        {
+            var first = BusTimes[0];
+            var last = BusTimes.Last();
+            long timestamp = 1 + EarliestDeparture(seed + 1, first);
+            do
+            {
+                // the first option is always valid so we skip that option and skip that timestamp
+                var t = timestamp;
+                foreach (var busId in BusTimes.Skip(1))
+                {
+                    if ( ! DoesBusDepartAtTimestamp(t++, busId))
+                    {
+                        break;
+                    }
+                    if (busId == last)
+                        return timestamp -1; // we skipped the first, but the first is the answer
+                }
+
+                timestamp = 1 + EarliestDeparture(timestamp + 1, first); // find the first valid option
+            } while (true);
+            return -1;
+        }
+
+        public Dictionary<long, long> EarliestDeparturesAfter(long timestamp)
+        {
+            return BusTimes.Where(bus => bus != 0).ToDictionary(bus => bus, bus => EarliestDeparture(timestamp, bus));
         }
     }
 }
