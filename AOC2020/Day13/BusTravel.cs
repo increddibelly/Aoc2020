@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace Day13
@@ -44,8 +45,13 @@ namespace Day13
             var first = BusTimes[0];
             var last = BusTimes.Last();
             long timestamp = 1 + EarliestDeparture(seed + 1, first);
+            long attempts = 0;
             do
             {
+                // to have some measure of progress
+                if (attempts++ % 100000000 == 0)
+                    Debug.WriteLine($"attempts: {attempts-1} @ timestamp {timestamp-1}");
+
                 // the first option is always valid so we skip that option and skip that timestamp
                 var t = timestamp;
                 foreach (var busId in BusTimes.Skip(1))
@@ -60,7 +66,6 @@ namespace Day13
 
                 timestamp = 1 + EarliestDeparture(timestamp + 1, first); // find the first valid option
             } while (true);
-            return -1;
         }
 
         public Dictionary<long, long> EarliestDeparturesAfter(long timestamp)

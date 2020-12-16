@@ -62,8 +62,8 @@ namespace Aoc2020Tests
             // Arrange
             var bus = new BusTravel(Input.Value);
 
-            // Act
-            var result = bus.FindSequentialDepartures(100000000000000);
+            // Act 602737000000020 too low, 700000000000000 too high.
+            var result = bus.FindSequentialDepartures(602823240970520);
 
             // Assert
             result.Should().Be(1068781);
