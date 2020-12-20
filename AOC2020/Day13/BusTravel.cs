@@ -40,7 +40,7 @@ namespace Day13
             } while (true);
         }
 
-        public long FindSequentialDepartures(long seed = 1)
+        public long BrutalFindSequentialDepartures(long seed = 1)
         {
             var first = BusTimes[0];
             var last = BusTimes.Last();
@@ -50,21 +50,64 @@ namespace Day13
             {
                 // to have some measure of progress
                 if (attempts++ % 100000000 == 0)
-                    Debug.WriteLine($"attempts: {attempts-1} @ timestamp {timestamp-1}");
+                    Debug.WriteLine($"attempts: {attempts - 1} @ timestamp {timestamp - 1}");
 
                 // the first option is always valid so we skip that option and skip that timestamp
                 var t = timestamp;
                 foreach (var busId in BusTimes.Skip(1))
                 {
-                    if ( ! DoesBusDepartAtTimestamp(t++, busId))
+                    if (!DoesBusDepartAtTimestamp(t++, busId))
                     {
                         break;
                     }
                     if (busId == last)
-                        return timestamp -1; // we skipped the first, but the first is the answer
+                        return timestamp - 1; // we skipped the first, but the first is the answer
                 }
 
                 timestamp = 1 + EarliestDeparture(timestamp + 1, first); // find the first valid option
+            } while (true);
+        }
+        public long FindSequentialDepartures(long seed = 1)
+        {
+            var firstBus = BusTimes[0];
+            var lastBus = BusTimes.Last();
+            long timestamp = 1 + EarliestDeparture(seed + 1, firstBus);
+            long attempts = 0;
+
+            var targets = new List<int>();
+
+            for (var i = 0; i<BusTimes.Length; i++)
+            {
+
+            }
+
+
+            do
+            {
+                // to have some measure of progress
+                if (attempts++ % 1000000 == 0)
+                    Debug.WriteLine($"attempts: {attempts - 1} @ timestamp {timestamp - 1}");
+
+                // the first option is always valid so we skip that option and skip that timestamp
+                var t = timestamp;
+                foreach (var busId in BusTimes.Skip(1))
+                {
+                    if (busId == 0)
+                    {
+                        // zeroes are fine.
+                        t++;
+                    }
+
+                    if (!DoesBusDepartAtTimestamp(t++, busId))
+                    {
+                        break;
+                    }
+
+                    if (busId == lastBus)
+                        return timestamp - 1; // we skipped the first, but the first is the answer
+                }
+
+                timestamp = 1 + EarliestDeparture(timestamp + 1, firstBus); // find the first valid option
             } while (true);
         }
 
